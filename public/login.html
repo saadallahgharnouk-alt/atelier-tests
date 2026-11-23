@@ -1,0 +1,14 @@
+﻿<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Connexion</title></head><body>
+<form id="f"><input id="email" type="email"><input id="password" type="password"><button type="submit">Se connecter</button></form>
+<p id="erreur"></p>
+<script>
+document.querySelector('#f').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const email = document.querySelector('#email').value;
+  const password = document.querySelector('#password').value;
+  const r = await fetch('/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, password }) });
+  if (r.ok) location.href = '/dashboard.html';
+  else document.querySelector('#erreur').textContent = 'Identifiants invalides';
+});
+</script></body></html>
