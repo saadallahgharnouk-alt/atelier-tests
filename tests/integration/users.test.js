@@ -8,6 +8,10 @@ beforeEach(async () => {
 });
 afterAll(() => db.end());
 describe('GET /users/:id', () => {
+  test('ne divulgue pas la technologie du serveur', async () => {
+    const res = await request(app).get('/users/1');
+    expect(res.headers['x-powered-by']).toBeUndefined();
+  });
   test('retourne Alice', async () => {
     const response = await request(app).get('/users/1');
     expect(response.status).toBe(200);
