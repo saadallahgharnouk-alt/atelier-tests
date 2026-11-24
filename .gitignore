@@ -2,3 +2,10 @@ node_modules/
 coverage/
 playwright-report/
 test-results/
+.scannerwork/
+*.tar
+*.tar.gz
+test-secret.txt
+.env
+.env.*
+!.env.example
